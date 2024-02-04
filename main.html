@@ -1,16 +1,54 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
 
+    #band {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
+
+<ul id="band"></ul>
+
+<script>
+  const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+  const sortedBands = bands.sort((a, b) => {
+    const ignoreWords = ['a', 'an', 'the'];
+    const stripWord = (str) => str.replace(/^(a|an|the)\s+/i, '');
+    const stripA = stripWord(a);
+    const stripB = stripWord(b);
+
+    return stripA.localeCompare(stripB);
+  });
+
+  const bandList = document.getElementById('band');
+
+  sortedBands.forEach(band => {
+    const listItem = document.createElement('li');
+    listItem.textContent = band;
+    bandList.appendChild(listItem);
+  });
 </script>
 
 </body>
-
 </html>
